@@ -1,0 +1,26 @@
+.checkout__footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0;
+    border:1px solid #e2cc71;
+    border-radius: 10px;
+    padding: 2%;
+}
+.checkout__price{
+    font-weight: 700;
+}
+.checkout__btn{
+    font-weight: 700;
+        color: #333;
+        padding: 10px 30px;
+        border: none;
+        border-radius: 24px;
+        background-color: #FFAE6D;
+        cursor: pointer;
+        &:hover{
+            background-color: #ffa153;
+        }
+}
+

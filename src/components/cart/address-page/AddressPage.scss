@@ -1,0 +1,43 @@
+.address-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 80px auto 20px;
+  width: 100%;
+  height: fit-content;
+  color: #fac9a0;
+
+  &__inputs {
+    width: 450px;
+    padding: 15px 15px;
+    display: block;
+    background-color: #eac9a0;
+    border-radius: 8px;
+    margin-bottom: 2%;
+    color: #444;
+  }
+}
+.address-footer {
+  &__wrapper {
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+  }
+  &__signup {
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+    width: 150px;
+    font-weight: 700;
+    color: #333;
+    padding: 12px 0;
+    margin: 10px;
+    border: none;
+    border-radius: 24px;
+    background-color: #bac9c0;
+    cursor: pointer;
+    &:hover {
+      background-color: #bac9a0;
+    }
+  }
+}

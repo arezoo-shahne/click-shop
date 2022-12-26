@@ -1,0 +1,44 @@
+.change-profile-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    width: 100%;
+    height: fit-content;
+    color: #fac9a0;
+}
+    .change-profile__input {
+      width: 450px;
+      padding: 15px 15px;
+      display: block;
+      background-color: #eac9a0;
+      border-radius: 8px;
+      margin-bottom: 2%;
+      color: #444;
+    }
+  
+  .sign-up-footer {
+    &__wrapper {
+      margin: 0 auto;
+      text-align: center;
+      width: 50%;
+    }
+}
+    .change-profile__button {
+      display: inline-block;
+      margin: 0 auto;
+      width: 150px;
+      font-weight: 700;
+      color: #333;
+      padding: 12px 0;
+      margin: 10px;
+      border: none;
+      border-radius: 24px;
+      background-color: #bac9c0;
+      cursor: pointer;
+      &:hover {
+        background-color: #bac9a0;
+      }
+    }
+  
+  
