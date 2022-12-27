@@ -45,13 +45,13 @@ function ChangePassword() {
         onChange={(event) => setrepeatPassword(event.target.value)}
       />
       <button
-        text={"بارگزاری"}
+      className="change-password-btn"
         disabled={
           newPassword !== repeatPassword ||
           newPassword.length < 7 ||
           oldPassword.length < 7
         }
-        click={() => {
+        onClick={() => {
           if (
             newPassword === repeatPassword &&
             newPassword.length > 7 &&
@@ -60,7 +60,7 @@ function ChangePassword() {
             CallPasswordApi();
           }
         }}
-      />
+      >تغییر</button>
     </div>
   );
 }

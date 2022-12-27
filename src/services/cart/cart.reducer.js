@@ -22,6 +22,8 @@ export const CartReducer = (
       return payload;
     case Remove:
       return payload;
+      case "clear":
+      return payload;
     default:
       return CartState;
   }

@@ -2,42 +2,50 @@
 
 @font-face {
   font-family: Shabnam;
-  src: url('../src/tools/fonts/Shabnam-Light.eot');
-  src: url('../src/tools/fonts/Shabnam-Light.eot') format('embedded-opentype'),
-       url('../src/tools/fonts/Shabnam-Light.woff2') format('woff2'),
-       url('../src/tools/fonts/Shabnam-Light.woff') format('woff'),
-       url('../src/tools/fonts/Shabnam-Light.ttf') format('truetype');
+  src: url("../src/tools/fonts/Shabnam-Light.eot");
+  src: url("../src/tools/fonts/Shabnam-Light.eot") format("embedded-opentype"),
+    url("../src/tools/fonts/Shabnam-Light.woff2") format("woff2"),
+    url("../src/tools/fonts/Shabnam-Light.woff") format("woff"),
+    url("../src/tools/fonts/Shabnam-Light.ttf") format("truetype");
   font-weight: 300;
 }
 @font-face {
   font-family: Shabnam;
-  src: url('../src/tools/fonts/Shabnam-Medium.eot');
-  src: url('../src/tools/fonts/Shabnam-Medium.eot') format('embedded-opentype'),
-       url('../src/tools/fonts/Shabnam-Medium.woff2') format('woff2'),
-       url('../src/tools/fonts/Shabnam-Medium.woff') format('woff'),
-       url('../src/tools/fonts/Shabnam-Medium.ttf') format('truetype');
+  src: url("../src/tools/fonts/Shabnam-Medium.eot");
+  src: url("../src/tools/fonts/Shabnam-Medium.eot") format("embedded-opentype"),
+    url("../src/tools/fonts/Shabnam-Medium.woff2") format("woff2"),
+    url("../src/tools/fonts/Shabnam-Medium.woff") format("woff"),
+    url("../src/tools/fonts/Shabnam-Medium.ttf") format("truetype");
   font-weight: 500;
 }
-*{
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   background-color: #f2f8a5;
   font-family: Shabnam;
 }
-input{
+input {
   border: none;
   outline: none;
   margin: 0;
   padding: 0;
 }
-a{
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+a {
   font-size: inherit;
   font-weight: inherit;
   text-decoration: none;
   color: inherit;
 }
-.click-shop-wrapper{
+.click-shop-wrapper {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;

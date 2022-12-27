@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
+import { ClearCart } from "../../../services/cart/cart.action";
 import CartPageItems from "../cart-page-items/CartPageItems";
 import "./CheckOutPage.scss"
 function CartCheckOut() {
@@ -23,6 +24,20 @@ function CartCheckOut() {
     });
     return orderItems;
   }
+  const [hasToken, sethasToken] = useState(true);
+  function CheckToken() {
+    if (JSON.parse(localStorage.getItem("login")) !== null) {
+      sethasToken(true);
+      return true;
+    } else {
+      sethasToken(false);
+      return false;
+    }
+  }
+  useEffect(() => {
+    CheckToken();
+  }, []);
+
   function SubmitOrder() {
     axios
       .post(
@@ -47,18 +62,20 @@ function CartCheckOut() {
       )
       .then((response) => {
         setSubmited(true);
+        mergedDispatch(ClearCart())
       });
   }
   return (
     <div className="cart-checkout">
+      {!hasToken && <Navigate to={"/"} />}
       {CartData.map((itemData, index) => {
         return <CartPageItems data={itemData} key={index} />;
       })}
 
       <div className="cart-checkout__footer">
+        <button onClick={SubmitOrder} className="checkout__btn">ثبت سفارش</button>
         <Link to="/cart" className="checkout__btn">تغییر</Link>
         <span>مجموع قیمت: {total.price}</span>
-        <button onClick={SubmitOrder} className="checkout__btn">ثبت سفارش</button>
       </div>
       {submited && <Navigate to="/" />}
     </div>

@@ -53,13 +53,12 @@ function UploadAvatar() {
         }}
         accept="image/*"
       />
-      <button
-        text={"بارگزاری"}
+      <button className="upload-btn"
         disabled={isFormValid}
-        click={() => {
+        onClick={() => {
           UploadFile();
         }}
-      />
+      >آپلود</button>
     </div>
   );
 }

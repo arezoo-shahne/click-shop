@@ -7,15 +7,19 @@ import {
   SignUpSuccess,
   SignUpLoading,
 } from "../../constance/Variables";
+import { addressInitialState } from "./User.reducer";
 
 export const LoginAction = (LoginPayload) => async (dispatch, getState) => {
+  const { LoginData } = getState().UserState;
+
   dispatch({
     type: "update-state",
     payload: {
-      LoginData: null,
+      LoginData: LoginData,
       LoginLoading: true,
       LoginError: "",
       signedUp: false,
+      userProfileInfo: {},
     },
   });
   await axios
@@ -33,6 +37,8 @@ export const LoginAction = (LoginPayload) => async (dispatch, getState) => {
           LoginLoading: false,
           LoginError: "",
           signedUp: false,
+          userProfileInfo: {},
+          userAddress: addressInitialState(),
         },
       });
     })
@@ -40,57 +46,27 @@ export const LoginAction = (LoginPayload) => async (dispatch, getState) => {
       dispatch({
         type: "update-state",
         payload: {
-          LoginData: null,
+          LoginData: LoginData,
           LoginLoading: false,
           LoginError: "failed",
           signedUp: false,
+
+          userProfileInfo: {},
         },
       });
     });
-  // try {
-  //   dispatch({
-  //     type: LoginPageLoading,
-  //     payload: {
-  //       LoginData: null,
-  //       LoginLoading: true,
-  //       LoginError: "",
-  //       signedUp: false,
-  //     },
-  //   });
-  //   const { data } = await axios.post("http://kzico.runflare.run/user/login", {
-  //     email: LoginPayload.email,
-  //     password: LoginPayload.password,
-  //   });
-  //   addToLocalStorage(data.user);
-  //   dispatch({
-  //     type: LoginPageSuccess,
-  //     payload: {
-  //       LoginData: [...data],
-  //       LoginLoading: false,
-  //       LoginError: "",
-  //       signedUp: false,
-  //     },
-  //   });
-  // } catch (error) {
-  //   dispatch({
-  //     type: LoginPageError,
-  //     payload: {
-  //       LoginData: null,
-  //       LoginLoading: false,
-  //       LoginError: error.message,
-  //       signedUp: false,
-  //     },
-  //   });
-  // }
 };
 export const SignUpAction = (SignUpPayload) => async (dispatch, getState) => {
+  const { LoginData } = getState().UserState;
+
   dispatch({
     type: "update-state",
     payload: {
-      LoginData: null,
+      LoginData: LoginData,
       LoginLoading: true,
       LoginError: "",
       signedUp: false,
+      userProfileInfo: {},
     },
   });
   await axios
@@ -104,10 +80,11 @@ export const SignUpAction = (SignUpPayload) => async (dispatch, getState) => {
       dispatch({
         type: "update-state",
         payload: {
-          LoginData: null,
+          LoginData: LoginData,
           LoginLoading: false,
           LoginError: "",
           signedUp: true,
+          userProfileInfo: {},
         },
       });
     })
@@ -115,71 +92,66 @@ export const SignUpAction = (SignUpPayload) => async (dispatch, getState) => {
       dispatch({
         type: "update-state",
         payload: {
-          LoginData: null,
+          LoginData: LoginData,
           LoginLoading: false,
           LoginError: "failed",
           signedUp: false,
+          userProfileInfo: {},
         },
       });
     });
-  //   try {
-  //     dispatch({
-  //       type: SignUpLoading,
-  //       payload: { LoginData: null, LoginLoading: true, LoginError: "" ,signedUp:false},
-  //     });
-  //     const { data } = await axios.post("http://kzico.runflare.run/user/signup", {
-  //       username: SignUpPayload.username,
-  //       email: SignUpPayload.email,
-  //       password: SignUpPayload.password,
-  //       mobile: SignUpPayload.mobile,
-  //     });
-  //     // addToLocalStorage(data.user);
-  //     dispatch({
-  //       type: SignUpSuccess,
-  //       payload: { LoginData: [...data], LoginLoading: false, LoginError: "",signedUp:true },
-  //     });
-  //   } catch (error) {
-  //     dispatch({
-  //       type: SignUpError,
-  //       payload: {
-  //         LoginData: {},
-  //         LoginLoading: false,
-  //         LoginError: error.message,
-  //         signedUp:false
-  //       },
-  //     });
-  //   }
 };
 export const addressAction = (address) => async (dispatch, getState) => {
-  saveUserAddress(address)
+  const { LoginData } = getState().UserState;
+  saveUserAddress(address);
   dispatch({
     type: "update-state",
     payload: {
-      LoginData: null,
+      LoginData: LoginData,
       LoginLoading: true,
       LoginError: "",
       signedUp: false,
-      userAddress:address
+      userAddress: address,
+      userProfileInfo: {},
     },
   });
 };
-function addToLocalStorage(loginData) {
-  localStorage.setItem("login", JSON.stringify(loginData));
-}
-function saveUserAddress(address){
-  localStorage.setItem("address", JSON.stringify(address));
-
-}
-export function getProfile() {
+export function Logout() {
   return async (dispatch, getState) => {
+  const { LoginData } = getState().UserState;
+    DeleteUserLocalStorage();
     dispatch({
       type: "update-state",
       payload: {
-        userLoading: true,
-        userList: getState().UserState.LoginData,
-        userError: "",
-        userSignedUp: false,
+        LoginLoading: false,
+        LoginData: LoginData,
+        LoginError: "",
+        SignedUp: false,
+        userAddress: {
+          city: null,
+          address: null,
+          postalCode: null,
+          phone: null,
+        },
         userProfileInfo: {},
+      },
+    });
+  };
+}
+
+export function getProfile() {
+  return async (dispatch, getState) => {
+    const { LoginData } = getState().UserState;
+    dispatch({
+      type: "update-state",
+      payload: {
+        LoginLoading: true,
+        LoginData: LoginData,
+        LoginError: "",
+        SignedUp: false,
+        userProfileInfo: {},
+        
+        userAddress:addressInitialState(),
       },
     });
     await axios
@@ -192,11 +164,13 @@ export function getProfile() {
         dispatch({
           type: "update-state",
           payload: {
-            userLoading: false,
-            userList: getState().UserState.LoginData,
-            userError: "",
-            userSignedUp: true,
+            LoginLoading: false,
+            LoginData: LoginData,
+            LoginError: "",
+            SignedUp: true,
             userProfileInfo: response.data,
+            
+            userAddress:addressInitialState(),
           },
         });
       })
@@ -204,14 +178,26 @@ export function getProfile() {
         dispatch({
           type: "update-state",
           payload: {
-            userLoading: false,
-            userList: null,
-            userError: error.message,
-            userSignedUp: false,
+            LoginLoading: false,
+            LoginData: LoginData,
+            LoginError: error.message,
+            SignedUp: false,
             userProfileInfo: {},
           },
         });
       })
       .finally(() => {});
   };
+}
+
+function DeleteUserLocalStorage() {
+  localStorage.removeItem("login");
+  localStorage.removeItem("address");
+}
+
+function addToLocalStorage(loginData) {
+  localStorage.setItem("login", JSON.stringify(loginData));
+}
+function saveUserAddress(address) {
+  localStorage.setItem("address", JSON.stringify(address));
 }

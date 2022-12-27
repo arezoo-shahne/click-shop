@@ -7,13 +7,12 @@ function ChangeProfile() {
   const { LoginData } = useSelector((response) => response.UserState);
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("male");
   const [age, setAge] = useState("");
   const [city, setCity] = useState("");
   async function SubmitForm() {
-    console.log(LoginData.token)
+    console.log(LoginData.token); 
     await axios.put(
-
       "http://kzico.runflare.run/user/change-profile",
       {
         firstname,
@@ -49,18 +48,35 @@ function ChangeProfile() {
           setLastName(event.target.value);
         }}
       />
+       <div className="change-profile__radio">
+        <span className="change-profile__button-holder">
+          <label className="change-profile__button">
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              onChange={(event) => {
+                setGender("male");
+              }}
+            />
+            مرد
+          </label>
+          <label className="change-profile__button">
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              onChange={(event) => {
+                setGender("female");
+              }}
+            />
+            زن
+          </label>
+        </span>
+      </div>
       <input
         className="change-profile__input"
-        type="text"
-        placeholder=" جنسیت"
-        value={gender}
-        onChange={(event) => {
-          setGender(event.target.value);
-        }}
-      />
-      <input
-        className="change-profile__input"
-        type="text"
+        type="number"
         placeholder="سن"
         value={age}
         onChange={(event) => {
@@ -77,11 +93,14 @@ function ChangeProfile() {
         }}
       />
       <button
-        className="change-profile__button" disabled={false} 
+        className="change-profile__button"
+        disabled={false}
         onClick={() => {
           SubmitForm();
         }}
-      >ذخیره</button>
+      >
+        ذخیره
+      </button>
     </div>
   );
 }

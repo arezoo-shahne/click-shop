@@ -5,15 +5,16 @@ import { getProfile } from "../../../services/user/User.action";
 
 function ProfilePage() {
   const AdDetailDispatch = useDispatch();
-  const { user } = useSelector(
-    (response) => response.UserState.userProfileInfo,
-  );
+  const { user } = useSelector((response) => {
+    console.log(response);
+    return response.UserState.userProfileInfo;
+  });
   useEffect(() => {
     AdDetailDispatch(getProfile());
   }, []);
   return (
     <div className="profile-page">
-      {/* {user && user.image && (
+      {user && user.image && (
         <div className="profile-page__image-holder">
           <img src={user.image} alt={user.username} />
         </div>
@@ -25,7 +26,7 @@ function ProfilePage() {
       {user && user.lastname && <p>نام خانوادگی : {user.lastname}</p>}
       {user && user.gender && <p>جنسیت : {user.gender}</p>}
       {user && user.age && <p>سن : {user.age}</p>}
-      {user && user.city && <p>شهر : {user.city}</p>} */}
+      {user && user.city && <p>شهر : {user.city}</p>}
     </div>
   );
 }

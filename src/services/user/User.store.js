@@ -1,12 +1,12 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from "redux";
 import thunk from "redux-thunk";
 import {UserReducer } from "./User.reducer";
-const Reducers = combineReducers({ UserState: UserReducer });
-// const InitialState=[];
+const reducers = combineReducers({ UserState: UserReducer });
+const initialState=[];
 const midleware = [thunk];
 const LoginStore = legacy_createStore(
-  Reducers,
+  reducers,
+  initialState,
   applyMiddleware(...midleware)
-  //   InitialState
 );
 export default LoginStore;

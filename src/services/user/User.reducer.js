@@ -14,9 +14,8 @@ export const UserReducer = (
     signedUp: false,
     userAddress: addressInitialState(),
     userProfileInfo: {},
-
   },
-  { type, payload }
+  { type, payload },
 ) => {
   switch (type) {
     case "update-state":
@@ -32,10 +31,17 @@ function LoginInitialState() {
   }
   return initState;
 }
-function addressInitialState() {
-  let initState = null;
+export function addressInitialState() {
+  let initState = {
+    city: null,
+    address: null,
+    postalCode: null,
+    phone: null,
+  };
+  console.log("ghabl if hastim");
   if (JSON.parse(localStorage.getItem("address"))) {
     initState = JSON.parse(localStorage.getItem("address"));
+    console.log("to if hastim");
   }
   return initState;
 }
