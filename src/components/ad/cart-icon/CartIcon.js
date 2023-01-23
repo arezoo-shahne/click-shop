@@ -9,7 +9,7 @@ function CartIcon() {
         (response)=>response.CartState
     )
   return (
-    <Link to="/cart">
+    <Link to="/cart" className="cart-icon">
       <span>{total.count}</span>
       <FiShoppingCart />
     </Link>

@@ -2,7 +2,6 @@
     width: 100%;
     height: fit-content;
     margin: 18px auto;
-    border: 1px solid #e2cc71;
     padding: 10px;
     &__header{
         display: flex;
@@ -10,15 +9,18 @@
         align-items: center;
     }
     &__image-wrapper{
-        margin-right: 16px;
-        width: 40%;
+        width: 30%;
         height: 200px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         img{
             width: auto;
-            height:100%
+            height:100%;
+            margin: 0px auto;
+            border: 1px solid #2b2d42;
+            padding: 10px;
+            background-color: white;
         }
     }
     &__details{
@@ -36,17 +38,23 @@
         text-overflow: ellipsis;
     }
     &__description{
-        width: 100%;
-        margin: 16px 0;
-        line-height: 16px;
+        line-height: 26px;
     }
     &__not-available{
-        color: rgb(248, 31, 31);
+    // color: rgb(47 42 129);
+    color: rgb(179, 36, 36);
         display:block;
         text-align: left;
         margin: 10px auto;
         padding: 8px 30px;
         border: none;
         border-radius: 24px;
+    }
+    &__star-icon{
+        margin: -3px 2px;
+        color: orange;
+    }
+    &__button-plus{
+        margin-top: 15px;
     }
 }

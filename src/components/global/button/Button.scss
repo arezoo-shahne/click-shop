@@ -1,15 +1,17 @@
 .csh-buttons{
-    font-weight: 700;
-        display: block;
-        margin-right: auto;
-        margin-left: 0;
-        color: #333;
-        padding: 10px 10px;
-        border: none;
-        border-radius: 24px;
-        background-color: #FFAE6D;
-        cursor: pointer;
+    font-weight: 500;
+    display: block;
+    margin-right: auto;
+    margin-left: 0;
+    margin-top: 15px;
+    color: #BDC6D1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 24px;
+    background-color: #26374e;
+        cursor: pointer !important;
         &:hover{
-            background-color: #ffa153;
+            background-color: #7fa3ce;
+            color: #26374e;
         }
 }

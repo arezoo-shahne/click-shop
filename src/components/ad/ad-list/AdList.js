@@ -14,7 +14,7 @@ function AdList() {
   return (
     <div className="csh-ad-list-wrapper">
       {
-        Addata.map((ad)=>{
+        Addata.splice(0,14).map((ad)=>{
           return <AdCard data={ad} key={ad._id}/>
         })
       }

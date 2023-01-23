@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { ClearCart } from "../../../services/cart/cart.action";
+import CartItems from "../cart-item/CartItems";
 import CartPageItems from "../cart-page-items/CartPageItems";
 import "./CheckOutPage.scss"
 function CartCheckOut() {
@@ -69,13 +70,17 @@ function CartCheckOut() {
     <div className="cart-checkout">
       {!hasToken && <Navigate to={"/"} />}
       {CartData.map((itemData, index) => {
-        return <CartPageItems data={itemData} key={index} />;
+        return <CartItems data={itemData} key={index} />;
       })}
 
-      <div className="cart-checkout__footer">
-        <button onClick={SubmitOrder} className="checkout__btn">ثبت سفارش</button>
+      <div className="checkout__footer">
+       <div className="footer__right-side">
+       <Link to="/" onClick={SubmitOrder} className="checkout__btn">ثبت سفارش</Link>
         <Link to="/cart" className="checkout__btn">تغییر</Link>
-        <span>مجموع قیمت: {total.price}</span>
+       </div>
+       <div className="footer__left-side">
+        <span className="checkout__price">مجموع قیمت: {total.price}</span>
+       </div>
       </div>
       {submited && <Navigate to="/" />}
     </div>

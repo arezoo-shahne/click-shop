@@ -18,11 +18,14 @@
     url("../src/tools/fonts/Shabnam-Medium.ttf") format("truetype");
   font-weight: 500;
 }
+body{
+  background-color: #BDC6D1;
+
+}
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  background-color: #f2f8a5;
   font-family: Shabnam;
 }
 input {
@@ -40,6 +43,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 a {
+  padding: 5px;
   font-size: inherit;
   font-weight: inherit;
   text-decoration: none;
@@ -47,6 +51,6 @@ a {
 }
 .click-shop-wrapper {
   width: 100%;
-  max-width: 960px;
+  max-width: 1150px;
   margin: 0 auto;
 }

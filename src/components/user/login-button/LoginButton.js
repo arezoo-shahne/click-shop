@@ -14,7 +14,7 @@ function LoginButton() {
   return (
     <div className="login-button">
       {LoginData ? (
-        <Link to="/profile">{LoginData.email}</Link>
+        <Link to="/profile">{LoginData.username}</Link>
       ) : (
         <Link to="/login">ورود</Link>
       )}

@@ -26,7 +26,7 @@ function CartPageItems({ data }) {
       </div>
       <div className="cart-items__left">
       <span className="cart-items__price">قیمت: {data.price}$</span>
-      <ButtonPlus count={data.qty} plus={Plus} minus={Minus} remove={Remove}/>
+      <ButtonPlus count={data.qty} plus={Plus} minus={Minus} remove={Remove} className="cart-items__button"/>
       </div>
     </div>
   );

@@ -6,7 +6,6 @@ import "./AddressPage.scss";
 
 function AddressPage() {
   const { userAddress } = useSelector((response) => {
-    console.log(response);
     return response.UserState;
   });
   const addressDispatch = useDispatch();

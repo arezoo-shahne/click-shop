@@ -16,7 +16,7 @@ function AdCard({data}) {
         <p className='csh-ad-card__sub-title'>تعداد: {data.countInStock ? available : notvailable}</p>
         <div className='csh-ad-card__footer'>
             <span>{data.price}$</span>
-            <span><RiStarSFill/>{data.rating}</span>
+            <span><RiStarSFill className='csh-ad-card__star-icon'/>{data.rating}</span>
         </div>
     </Link>
   )

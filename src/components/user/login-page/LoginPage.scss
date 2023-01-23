@@ -11,10 +11,10 @@
     width: 450px;
     padding: 15px 15px;
     display: block;
-    background-color: #eac9a0;
+    background-color: #a1a1be;
     border-radius: 8px;
-    margin-bottom: 2%;
-    color: #444;
+    margin-bottom: 1%;
+    color: #f1d9d9;
   }
 }
 .login-footer {
@@ -28,17 +28,18 @@
     display: inline-block;
     margin: 0 auto;
     width: 150px;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 16px;
-    color: #333;
+    color: #BDC6D1;
     padding: 12px 0;
     margin: 10px;
     border: none;
     border-radius: 24px;
-    background-color: #bac9c0;
+    background-color: #26374e;
     cursor: pointer;
-    &:hover {
-      background-color: #bac9a0;
-    }
+    &:hover{
+      background-color: #7fa3ce;
+      color: #26374e;
+  }
   }
 }

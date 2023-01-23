@@ -2,8 +2,8 @@
   margin-bottom: 10px;
   width: 100%;
   height: 48px;
-  border:1px solid #e2cc71;
-  border-radius: 10px;
+  border:1px solid #26374e;
+  border-radius: 50px;
   padding: 4%;
   display: flex;
   justify-content: space-between;
@@ -17,6 +17,9 @@
     }
   }
   &__image {
+    border: 1px solid #26374e;
+    background-color: white;
+    padding: 2px;
     width: 32px;
     height: 32px;
     display: flex;
@@ -34,7 +37,8 @@
     align-items: center;
 }
 &__price{
-    margin-left: 60px;
+  margin-left: 20px;
+  width: 130px;
 }
 &__name{
   width: 500px;
@@ -42,4 +46,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 }

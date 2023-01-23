@@ -5,7 +5,12 @@ import { GetDetailAction } from "../../../services/ad/ad-detail/AdDetail.action"
 import "./AdDetail.scss";
 import { RiStarSFill } from "react-icons/ri";
 import CshButton from "../../global/button/Button";
-import { CartAction, minusQty, plusQty, removeItem } from "../../../services/cart/cart.action";
+import {
+  CartAction,
+  minusQty,
+  plusQty,
+  removeItem,
+} from "../../../services/cart/cart.action";
 import ButtonPlus from "../../global/button-plus/ButtonPlus";
 
 function AdDetail() {
@@ -14,30 +19,30 @@ function AdDetail() {
   const { adDetailState, CartState } = useSelector((response) => response);
   const { AdDetailData, AdLoading, AdError } = adDetailState;
   const { CartData, CartLoading, CartError } = CartState;
-  let product=null;
+  let product = null;
 
   useEffect(() => {
     AdDetailDispatch(GetDetailAction(id));
   }, []);
-  function AddToCartDEtails(){
-    AdDetailDispatch(CartAction(AdDetailData))
+  function AddToCartDEtails() {
+    AdDetailDispatch(CartAction(AdDetailData));
   }
-  function Plus(){
-    AdDetailDispatch(plusQty(id))
+  function Plus() {
+    AdDetailDispatch(plusQty(id));
   }
-  function Minus(){
-    AdDetailDispatch(minusQty(id))
+  function Minus() {
+    AdDetailDispatch(minusQty(id));
   }
-  function Remove(){
-    AdDetailDispatch(removeItem(id))
+  function Remove() {
+    AdDetailDispatch(removeItem(id));
   }
-  function getProduct(){
-CartData.forEach(cartProduct => {
-  if(cartProduct._id===id){
-    product=cartProduct;
-  }
-});
-return product;
+  function getProduct() {
+    CartData.forEach((cartProduct) => {
+      if (cartProduct._id === id) {
+        product = cartProduct;
+      }
+    });
+    return product;
   }
   return (
     <div className="csh-ad-detail">
@@ -55,21 +60,27 @@ return product;
           <span>موجودی: {AdDetailData.countInStock}</span>
           <span>
             امتیاز محصول: {AdDetailData.rating}
-            <RiStarSFill />
+            <RiStarSFill className='csh-ad-detail__star-icon'/>
           </span>
           <span>قیمت: {AdDetailData.price} $</span>
+          <span className="csh-ad-detail__description">
+            توضیحات: {AdDetailData.description}
+          </span>
         </div>
       </div>
-      <p className="csh-ad-detail__description">
-        توضیحات: {AdDetailData.description}
-      </p>
-      {
-        AdDetailData.countInStock===0 ?
-        <div className="csh-ad-detail__not-available">محصول موجود نیست</div> :
-        getProduct()?
-        <ButtonPlus count={product.qty} plus={Plus} minus={Minus} remove={Remove}/> :
+      
+      {AdDetailData.countInStock === 0 ? (
+        <div className="csh-ad-detail__not-available">محصول موجود نیست</div>
+      ) : getProduct() ? (
+        <ButtonPlus
+          count={product.qty}
+          plus={Plus}
+          minus={Minus}
+          remove={Remove}
+        />
+      ) : (
         <CshButton text="افزودن به سبد خرید" click={AddToCartDEtails} />
-      }
+      )}
     </div>
   );
 }
