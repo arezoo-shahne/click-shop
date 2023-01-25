@@ -8,6 +8,7 @@ import {
 export const CartAction = (productData) => async (dispatch, getState) => {
   const { CartState } = getState();
   const cartListData = JSON.parse(JSON.stringify(CartState.CartData));
+  const cartdata=Array.from(CartState.CartData)
   if (
     duplicate(cartListData, productData._id) ||
     productData.countInStock === 0
@@ -15,15 +16,15 @@ export const CartAction = (productData) => async (dispatch, getState) => {
     return;
   }
   productData.qty = 1;
-  cartListData.push(productData);
+  cartdata.push(productData);
   addToLocalStorage(cartListData);
   dispatch({
     type: AddToCart,
     payload: {
-      CartData: cartListData,
+      CartData: cartdata,
       Cartloading: true,
       Carterror: "",
-      total: totalProduct(cartListData),
+      total: totalProduct(cartdata),
     },
   });
 };
@@ -117,7 +118,7 @@ function totalProduct(cartdata) {
     count: 0,
     price: 0,
   };
-  cartdata.forEach((product) => {
+  [...cartdata].forEach((product) => {
     total.count += product.qty;
     total.price += product.price * product.qty;
   });
