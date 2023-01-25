@@ -1,38 +1,43 @@
 
 .login-button{
   position: relative;
-  &:hover {
-    .login-button__wrapper {
-      display: block;
-    }
-  }
   &__wrapper {
+    transition: all 2s;
     width: 200px;
     height: fit-content;
     padding-top: 16px;
     display: none;
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: 122%;
+    right: -60px;
     z-index: 2;
   }
+  &:hover {
+    .login-button__wrapper {
+      display: block;
+    }
+  }
   &__menu {
-    background-color: #eee;
+    background-color: #26374e;
+    color: #BDC6D1;
     width: 100%;
     height: fit-content;
-    padding: 32px 16px 16px;
+    padding: 10px 0px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
+    text-align: center;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
     div , a {
+    cursor:  pointer !important;
     width: 100%;
     border-bottom: 1px solid black;
-    padding: 0 16px 8px ;
-    margin-block-start: 8px;
-    background-color: transparent;
+    padding: 8px 16px;
+    
   }
-  div{ border: none; cursor: pointer; }
+  div{ 
+    border: none; }
   }
  
 }

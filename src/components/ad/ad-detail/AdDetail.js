@@ -20,7 +20,6 @@ function AdDetail() {
   const { AdDetailData, AdLoading, AdError } = adDetailState;
   const { CartData, CartLoading, CartError } = CartState;
   let product = null;
-
   useEffect(() => {
     AdDetailDispatch(GetDetailAction(id));
   }, []);
@@ -37,7 +36,7 @@ function AdDetail() {
     AdDetailDispatch(removeItem(id));
   }
   function getProduct() {
-    CartData.forEach((cartProduct) => {
+    [...CartData].forEach((cartProduct) => {
       if (cartProduct._id === id) {
         product = cartProduct;
       }
